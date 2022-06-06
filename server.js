@@ -1,16 +1,21 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const path = require("path");
 const FacebookAnalytic = require("./download");
 
 app.use(cors());
-
+app.set("view engine", "pug");
 global.__basedir = __dirname;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "dist")));
 let port = 8181;
 app.listen(port, () => {
   console.log(`Running at port: ${port} `);
+});
+app.get("/", (req, res) => {
+  res.render("index", { title: "Hey", message: "Hello there!" });
 });
 app.get("/download", (req, res) => {
   req = req.query;
