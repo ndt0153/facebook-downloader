@@ -1,0 +1,16 @@
+html
+  head
+    title= title
+    link(rel="stylesheet" type="text/css" href="/style/style.css")
+    script(src="https://cdn.tailwindcss.com")
+
+  body.bg-gray-100
+    div.container.mx-auto.my-auto.flex.flex-col.justify-center
+       h3.text-3xl.font-bold.text-gray-900.py-8.text-center Da cao duoc #{lists.length} videos
+       div.grid.grid-cols-5.gap-3.container.mx-auto
+        for item in lists
+            div.bg-white.p-2.rounded-lg
+                a(href=item.href)
+                    div.h-40.mb-3.overflow-hidden.w-full
+                        img(src=item.img).rounded-lg.object-cover
+                    h2.text-md.font-bold.flex-wrap.h-12.overflow-hidden.text-gray-700= item.id

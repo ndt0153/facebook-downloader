@@ -3,12 +3,19 @@ html
     title= title
     link(rel="stylesheet" type="text/css" href="/style/style.css")
     script(src="https://cdn.tailwindcss.com")
+    script(src="https://code.jquery.com/jquery-3.6.0.min.js")
+     script.
+      $(document).ready(function(){
+      $("form").submit(function(event){
 
+      })
+      });
   body.bg-gray-200
     div.h-screen.container.mx-auto.my-auto.flex.flex-col.justify-center
         h1.text-2xl.text-center.mb-4 Facebook Video Scraper
-        form(action="").text-center
-            input(type="text" placeholder="Enter Facebook Link").bg-white.w-3_4.h-12.rounded-t-xl.px-5
+        form(action='/analytics' method='POST' ).text-center
+            input(type="text" value="" placeholder="Enter Facebook Link" name="link").bg-white.w-3_4.h-12.rounded-t-xl.px-5
+            input(type="submit" value="" placeholder="Submit").bg-white
         div.bg-white.bg-white.w-3_4.rounded-b-xl.px-5.py-6.mx-auto.shadow-md.recent-fix
             p.text-gray-700.mb-4.font-bold Recent 
             p.text-gray-500.py-2 https://www.facebook.com/Divodivafanvietnam
