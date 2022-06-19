@@ -1,5 +1,5 @@
-import DownloadFacebookVideo from "./test3.js";
-import fs from "fs";
+const DownloadFacebookVideo = require("./test3.js");
+//import fs from "fs";
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const reqs = [
   {
@@ -23,10 +23,20 @@ const reqs = [
 ];
 const hello = async () => {
   //fs.createWriteStream("stdout.txt");
-  for (let req of reqs) {
-    let abc = await DownloadFacebookVideo(req.text, req.url);
-    await delay(5000);
-    console.log(abc);
+  for (let [index, req] of reqs.entries()) {
+    const message =
+      "Dang tai file " +
+      req.text +
+      " (" +
+      parseInt(index + 1) +
+      "/" +
+      reqs.length +
+      ")" +
+      "\n";
+    // console.log(message);
+    let abc = await DownloadFacebookVideo(req.text, req.url, message);
+    await delay(15000);
+    //console.log(abc);
   }
 };
 hello();
