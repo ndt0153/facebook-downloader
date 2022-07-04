@@ -3,6 +3,7 @@ const fs = require("fs");
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const ProcessDataAndDownload = async (data) => {
+  //fs.writeFileSync("stdout.txt", "");
   for (let [index, req] of data.entries()) {
     const message =
       "Dang tai file " +

@@ -5,7 +5,7 @@ const path = require("path");
 const downloadDir = path.join(os.homedir(), "Downloads");
 const DownloadFacebookVideo = async (name, url, pageName, message) => {
   const { execa } = await import("execa");
-  fs.writeFileSync("stdout.txt", "");
+
   const subprocess = execa("youtube-dl", [
     "-f",
     "bestvideo[height>=720]+m4a/webm+m4a",
@@ -19,7 +19,7 @@ const DownloadFacebookVideo = async (name, url, pageName, message) => {
   if (message) {
     fs.appendFileSync("stdout.txt", message);
   }
-  subprocess.stdout.pipe(fs.createWriteStream("stdout.txt"));
+  subprocess.stdout.pipe(fs.createWriteStream("stdout.txt", { flags: "a" }));
 };
 
 //export default DownloadFacebookVideo;
