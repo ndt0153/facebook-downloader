@@ -5,6 +5,8 @@ const path = require("path");
 const FacebookAnalytic = require("./download");
 const mongoose = require("mongoose");
 const dbConnect = require("./db");
+const open = require("open");
+
 const { saveToDB, uniques } = require("./facebook");
 const ProcessDataAndDownload = require("./test");
 app.use(cors());
@@ -16,7 +18,8 @@ app.use(express.static(path.join(__dirname, "dist")));
 mongoose.Promise = global.Promise;
 
 let port = 8181;
-app.listen(port, () => {
+app.listen(port, async () => {
+  open("http://localhost:8181");
   console.log(`Running at port: ${port} `);
 });
 /* mongoose

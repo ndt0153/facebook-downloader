@@ -634,6 +634,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-1_2 {
   height: 50%;
 }
+.h-8_10 {
+  height: 80%;
+}
 .hide {
   display: none !important;
 }
