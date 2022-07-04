@@ -3,14 +3,48 @@ html
     title= title
     link(rel="stylesheet" type="text/css" href="/style/style.css")
     script(src="https://cdn.tailwindcss.com")
+    script(src="https://code.jquery.com/jquery-3.6.0.min.js")
+    script.
+      $(document).ready(function ajax(){
+        $("form").submit(function(e) {
+          e.preventDefault();
+          let submitFacebook = []
+          $('input[type=checkbox]:checked').each(function(){submitFacebook.push({"name": $(this).attr("name"),"pageName": $(this).attr("data-pagename"), "value": $(this).val() })})
+          $.ajax({ method: "POST",
+                   url: "/download",
+                   data: {'data': submitFacebook},
+                   success: (res) => {
+                   $(".text-center").html("Đang tải vui lòng chờ");
+          },
+                 })
+        })
+      })
 
-  body.bg-gray-100
+  body
     div.container.mx-auto.my-auto.flex.flex-col.justify-center
+       div
+        <iframe src="http://127.0.0.1:9001/" title="W3Schools Free Online Web Tutorials"></iframe>
        h3.text-3xl.font-bold.text-gray-900.py-8.text-center Da cao duoc #{lists.length} videos
-       div.grid.grid-cols-5.gap-3.container.mx-auto
-        for item in lists
-            div.bg-white.p-2.rounded-lg
-                a(href=item.href)
-                    div.h-40.mb-3.overflow-hidden.w-full
-                        img(src=item.img).rounded-lg.object-cover
-                    h2.text-md.font-bold.flex-wrap.h-12.overflow-hidden.text-gray-700= item.id
+       div.container.mx-auto
+        form(action="/download", method="POST").flex.check-list.flex-col
+          table.flex.items-center.table-fixed.w-full
+              tr
+                th check
+                th Ảnh
+                th Tên
+                th.text-left Lượt xem
+                th.text-left Lượt like
+                  for item in lists
+                    tr
+                      th
+                        input(type="checkbox" name=item.fileName value=item.url data-pagename=item.pageName).w-5.h-5
+                      th.w-20.h-20
+                        div.mb-3.overflow-hidden
+                        img(src=item.img).rounded-lg.object-cover.h-full.w-full
+                      th.w-2_4.align-middle.pr-10
+                        h2.text-md.font-bold.flex-wrap.h-12.overflow-hidden.text-gray-700.text-left.ml-3= item.text
+                      th.w-1_10.text-left
+                        p.text-md.text-gray-500= item.view
+                      th.w-1_10.text-left
+                        p.text-md.text-gray-500= item.react 
+          input(type="submit" value="Download Video" placeholder="Download Video").bg-sky-500.px-8.py-2.text-white.mt-10.fixed.bottom-0.right-0

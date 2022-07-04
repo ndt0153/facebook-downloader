@@ -1,6 +1,13 @@
-[facebook] 268346698799003: Downloading webpage
-[download] Downloading playlist: 268346698799003
-[facebook] playlist 268346698799003: Collected 1 video ids (downloading 1 of them)
+[facebook] 1394067574406503: Downloading webpage
+[download] Downloading playlist: 1394067574406503
+[facebook] playlist 1394067574406503: Collected 1 video ids (downloading 1 of them)
 [download] Downloading video 1 of 1
-[download] videos/Người Tình Mùa Đông ver. Nam Trầm!!!.mp4 has already been downloaded and merged
-[download] Finished downloading playlist: 268346698799003
+[download] Destination: /Users/iamp/Downloads/videos/Divo,Diva Fan Vietnam/Uu_va_Khuyet_diem_thuong_thay_khi_xu_ly_1_ban_Pop_.f412882864088234v
+[download]   0.0% of 16.61MiB at 347.47KiB/s ETA 00:49[download]   0.0% of 16.61MiB at 948.44KiB/s ETA 00:17[download]   0.0% of 16.61MiB at  1.81MiB/s ETA 00:09[download]   0.1% of 16.61MiB at  3.61MiB/s ETA 00:04[download]   0.2% of 16.61MiB at  4.17MiB/s ETA 00:03[download]   0.4% of 16.61MiB at  1.52MiB/s ETA 00:10[download]   0.7% of 16.61MiB at  2.47MiB/s ETA 00:06[download]   1.5% of 16.61MiB at  3.99MiB/s ETA 00:04[download]   3.0% of 16.61MiB at  4.85MiB/s ETA 00:03[download]   6.0% of 16.61MiB at  6.06MiB/s ETA 00:02[download]  12.0% of 16.61MiB at  6.74MiB/s ETA 00:02[download]  24.1% of 16.61MiB at  6.71MiB/s ETA 00:01[download]  48.2% of 16.61MiB at  6.72MiB/s ETA 00:01[download]  72.2% of 16.61MiB at  6.89MiB/s ETA 00:00[download]  96.3% of 16.61MiB at  6.78MiB/s ETA 00:00[download] 100.0% of 16.61MiB at  6.76MiB/s ETA 00:00[download] 100% of 16.61MiB in 00:02
+[download] Destination: /Users/iamp/Downloads/videos/Divo,Diva Fan Vietnam/Uu_va_Khuyet_diem_thuong_thay_khi_xu_ly_1_ban_Pop_.f1368903046935109a
+[download]   0.1% of 743.29KiB at 287.03KiB/s ETA 00:02[download]   0.4% of 743.29KiB at 820.75KiB/s ETA 00:00[download]   0.9% of 743.29KiB at  1.78MiB/s ETA 00:00[download]   2.0% of 743.29KiB at  3.36MiB/s ETA 00:00[download]   4.2% of 743.29KiB at 796.18KiB/s ETA 00:00[download]   8.5% of 743.29KiB at  1.35MiB/s ETA 00:00[download]  17.1% of 743.29KiB at  2.20MiB/s ETA 00:00[download]  34.3% of 743.29KiB at  3.68MiB/s ETA 00:00[download]  68.7% of 743.29KiB at  4.44MiB/s ETA 00:00[download] 100.0% of 743.29KiB at  5.48MiB/s ETA 00:00[download] 100% of 743.29KiB in 00:00
+[ffmpeg] Merging formats into "/Users/iamp/Downloads/videos/Divo,Diva Fan Vietnam/Uu_va_Khuyet_diem_thuong_thay_khi_xu_ly_1_ban_Pop_.mp4"
+Deleting original file /Users/iamp/Downloads/videos/Divo,Diva Fan Vietnam/Uu_va_Khuyet_diem_thuong_thay_khi_xu_ly_1_ban_Pop_.f412882864088234v (pass -k to keep)
+Deleting original file /Users/iamp/Downloads/videos/Divo,Diva Fan Vietnam/Uu_va_Khuyet_diem_thuong_thay_khi_xu_ly_1_ban_Pop_.f1368903046935109a (pass -k to keep)
+[download] Finished downloading playlist: 1394067574406503
+

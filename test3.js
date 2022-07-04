@@ -1,11 +1,16 @@
 const fs = require("fs");
-const DownloadFacebookVideo = async (name, url, message) => {
+const os = require("os");
+const path = require("path");
+
+const downloadDir = path.join(os.homedir(), "Downloads");
+const DownloadFacebookVideo = async (name, url, pageName, message) => {
   const { execa } = await import("execa");
+  fs.writeFileSync("stdout.txt", "");
   const subprocess = execa("youtube-dl", [
     "-f",
     "webm+m4a",
     "-o",
-    "videos/" + name,
+    downloadDir + "/" + "videos/" + pageName + "/" + name,
     "--merge-output-format",
     "mp4",
     url,
@@ -16,7 +21,7 @@ const DownloadFacebookVideo = async (name, url, message) => {
   }
   subprocess.stdout.pipe(fs.createWriteStream("stdout.txt"));
 };
-DownloadFacebookVideo();
+
 //export default DownloadFacebookVideo;
 module.exports = DownloadFacebookVideo;
 //console.log({ stdout, stderr });

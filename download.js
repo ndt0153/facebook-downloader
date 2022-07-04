@@ -11,7 +11,7 @@ const FacebookAnalytic = async (link) => {
       return result;
     });
 
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
   await page.goto(link + "/videos", {
     waitUntil: "networkidle0",
@@ -21,6 +21,15 @@ const FacebookAnalytic = async (link) => {
   for (let i = 0; i < 1; i++) {
     await page.keyboard.press("PageDown", { delay: 2000 });
   }
+  const page_raw = await Promise.all(
+    (
+      await page.$x(
+        "//span[contains(@class, 'd2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 a8c37x1j fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 ns63r2gh rwim8176 m6dqt4wy h7mekvxk hnhda86s oo9gr5id hzawbc8m')]"
+      )
+    ).map(
+      async (item) => await (await item.getProperty("innerText")).jsonValue()
+    )
+  );
   const hrefs_raw = await Promise.all(
     (
       await page.$x("//a[contains(@href,'" + fullLink + "')]")
@@ -42,6 +51,25 @@ const FacebookAnalytic = async (link) => {
       return index % 2 === 0;
     });
   }
+  const view_raw = await Promise.all(
+    (
+      await page.$x("//div[contains(@class, 'bnpdmtie')]")
+    ).map(
+      async (item) => await (await item.getProperty("textContent")).jsonValue()
+    )
+  );
+  let view = view_raw.filter(function (item, index) {
+    return index % 2 === 1;
+  });
+  const react = await Promise.all(
+    (
+      await page.$x(
+        "//span[contains(@class, 'ni8dbmo4 stjgntxs ltmttdrg')]//span[contains(@class, 'tojvnm2t a6sixzi8 abs2jz4q a8s20v7p t1p8iaqh k5wvi7nf q3lfd5jv pk4s997a bipmatt0 cebpdrjk qowsmv63 owwhemhu dp1hu0rb dhp61c6y iyyx5f41')]"
+      )
+    ).map(
+      async (item) => await (await item.getProperty("textContent")).jsonValue()
+    )
+  );
 
   const img = await Promise.all(
     (
@@ -51,6 +79,26 @@ const FacebookAnalytic = async (link) => {
   _.uniq(text);
   _.uniq(hrefs);
   _.uniq(img);
+  let fileName = [];
+  text.forEach((item, index) => {
+    let name = item
+      .replace(/\n/g, "")
+      .replace(/[!@#$%^&*"]/g, "")
+      .replace(/[”“]+/g, "");
+    let shortName = name.slice(0, 50);
+    let finalName = shortName
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/đ/g, "d")
+      .replace(/Đ/g, "D");
+    let finalName2 = finalName.replaceAll(" ", "_");
+    fileName.push(finalName2);
+  });
+  let page_name = page_raw
+    .toString()
+    .replace(/\n/g, "")
+    .replace(/[!@#$%^&*"]/g, "")
+    .replace(/[”“]+/g, "");
   let result = [];
   for (let i = 0; i < hrefs.length; i++) {
     let id = hrefs[i].split("/");
@@ -59,6 +107,10 @@ const FacebookAnalytic = async (link) => {
       url: hrefs[i],
       text: text[i],
       img: img[i],
+      view: view[i],
+      react: react[i],
+      fileName: fileName[i],
+      pageName: page_name,
     });
   }
   // await page.screenshot({ path: "example.png" });

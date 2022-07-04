@@ -3,22 +3,28 @@ const DownloadFacebookVideo = require("./test3.js");
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const reqs = [
   {
-    id: "1394067574406503",
-    url: "https://www.facebook.com/Divodivafanvietnam/videos/%C6%B0u-v%C3%A0-khuy%E1%BA%BFt-%C4%91i%E1%BB%83m-th%C6%B0%E1%BB%9Dng-th%E1%BA%A5y-khi-x%E1%BB%AD-l%C3%BD-1-b%E1%BA%A3n-pop-ballad/1394067574406503/",
-    text: "Ưu và Khuyết điểm thường thấy khi xử lý 1 bản Pop Ballad!",
-    img: "https://scontent.fvca1-3.fna.fbcdn.net/v/t15.5256-10/285653200_837002067275279_6932817710180662348_n.jpg?stp=dst-jpg_p370x247&_nc_cat=111&ccb=1-7&_nc_sid=ad6a45&_nc_ohc=qO_DaJ9goaIAX8YXMjJ&_nc_ht=scontent.fvca1-3.fna&oh=00_AT9J-ylT2LxVQe5DppI3X-jAdCyZRzZEwg9hQDmRTpkuOA&oe=62A61935",
+    name: "Huong_dan_hat_Note_cao_CUC_DE_chi_trong_5_Phut",
+    pageName: "Divo,Diva Fan Vietnam",
+    value:
+      "https://www.facebook.com/Divodivafanvietnam/videos/h%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-h%C3%A1t-note-cao-c%E1%BB%B1c-d%E1%BB%85-ch%E1%BB%89-trong-5-ph%C3%BAt/5869951319700442/",
   },
   {
-    id: "789173179097102",
-    url: "https://www.facebook.com/Divodivafanvietnam/videos/kh%C3%BAc-giao-tranh-phi%C3%AAn-b%E1%BA%A3n-k%E1%BB%B3-%E1%BA%A3o/789173179097102/",
-    text: "Khúc Giao Tranh - Phiên bản Kỳ ảo!!!",
-    img: "https://scontent.fvca1-2.fna.fbcdn.net/v/t15.5256-10/284576313_762567298229793_3390500662432804911_n.jpg?stp=dst-jpg_p370x247&_nc_cat=107&ccb=1-7&_nc_sid=ad6a45&_nc_ohc=AEHfM-_VCakAX_eFwgd&_nc_oc=AQlg0RkgypxPLR0qPMPG9CQag2aHToTOlli6JRSMtlVTjpazi2UHHV1HmwfoAoHY-fLkG4B6G-gRrKDzfjBxMjI5&_nc_ht=scontent.fvca1-2.fna&oh=00_AT8ScerOsOhPRvoeGFKb52zQG8QhtuwkhpzQX2ynBK5IAg&oe=62A4D6ED",
+    name: "LIVESHOW_THO_cua_giong_ca_hang_dau_dong_nhac_dan_g",
+    pageName: "Divo,Diva Fan Vietnam",
+    value:
+      "https://www.facebook.com/Divodivafanvietnam/videos/liveshow-th%C6%A1-c%E1%BB%A7a-gi%E1%BB%8Dng-ca-h%C3%A0ng-%C4%91%E1%BA%A7u-d%C3%B2ng-nh%E1%BA%A1c-d%C3%A2n-gian-mi%E1%BB%81n-b%E1%BA%AFc-anh-th%C6%A1-coi-ch%E1%BB%8B-q/438065294524643/",
   },
   {
-    id: "268346698799003",
-    url: "https://www.facebook.com/Divodivafanvietnam/videos/ng%C6%B0%E1%BB%9Di-t%C3%ACnh-m%C3%B9a-%C4%91%C3%B4ng-ver-nam-tr%E1%BA%A7m/268346698799003/",
-    text: "Người Tình Mùa Đông ver. Nam Trầm!!!",
-    img: "https://scontent.fvca1-2.fna.fbcdn.net/v/t15.5256-10/281718725_1315870828939486_7410041988243545551_n.jpg?stp=dst-jpg_p370x247&_nc_cat=100&ccb=1-7&_nc_sid=ad6a45&_nc_ohc=EDRcvaRuLycAX88vb9o&_nc_ht=scontent.fvca1-2.fna&oh=00_AT-TZgyH3y4JZpiPgOVrZeO-gKOagJwJ1clb8bOGka09vg&oe=62A585EC",
+    name: "Gen_Z_dat_toi_trinh_do_Vocalist_da_hiem,_nhung_la_",
+    pageName: "Divo,Diva Fan Vietnam",
+    value:
+      "https://www.facebook.com/Divodivafanvietnam/videos/gen-z-%C4%91%E1%BA%A1t-t%E1%BB%9Bi-tr%C3%ACnh-%C4%91%E1%BB%99-vocalist-%C4%91%C3%A3-hi%E1%BA%BFm-nh%C6%B0ng-l%C3%A0-vocalist-r%E1%BB%93i-m%C3%A0-v%E1%BA%ABn-c%C3%B2n-kh%C3%B4ng-n/2295283977304641/",
+  },
+  {
+    name: "Uu_va_Khuyet_diem_thuong_thay_khi_xu_ly_1_ban_Pop_",
+    pageName: "Divo,Diva Fan Vietnam",
+    value:
+      "https://www.facebook.com/Divodivafanvietnam/videos/%C6%B0u-v%C3%A0-khuy%E1%BA%BFt-%C4%91i%E1%BB%83m-th%C6%B0%E1%BB%9Dng-th%E1%BA%A5y-khi-x%E1%BB%AD-l%C3%BD-1-b%E1%BA%A3n-pop-ballad/1394067574406503/",
   },
 ];
 const hello = async () => {
@@ -26,7 +32,7 @@ const hello = async () => {
   for (let [index, req] of reqs.entries()) {
     const message =
       "Dang tai file " +
-      req.text +
+      req.name +
       " (" +
       parseInt(index + 1) +
       "/" +
@@ -34,9 +40,14 @@ const hello = async () => {
       ")" +
       "\n";
     // console.log(message);
-    let abc = await DownloadFacebookVideo(req.text, req.url, message);
-    await delay(15000);
-    //console.log(abc);
+    let abc = await DownloadFacebookVideo(
+      req.name,
+      req.value,
+      req.pageName,
+      message
+    );
+    await delay(5000);
   }
+  return await console.log("OK");
 };
 hello();
