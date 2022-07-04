@@ -77,11 +77,7 @@ const FacebookAnalytic = async (link) => {
       await page.$x("//img[contains(@alt,'Video thumbnail')]")
     ).map(async (item) => await (await item.getProperty("src")).jsonValue())
   );
-  console.log(text);
-  _.uniq(text);
-  _.uniq(hrefs);
-  _.uniq(img);
-  console.log(text);
+
   let fileName = [];
   text.forEach((item, index) => {
     let name = item
@@ -117,8 +113,7 @@ const FacebookAnalytic = async (link) => {
     });
   }
   let finalResult = _.uniq(result);
-  //console.log(result);
-  console.log(view);
+
   // await page.screenshot({ path: "example.png" });
   //let abc = await page.$("._52jh");
   //console.log(abc);
