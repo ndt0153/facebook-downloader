@@ -3,23 +3,23 @@ const _ = require("lodash");
 const Page = require("./models/page.model");
 const { findInDB, uniques } = require("./facebook");
 const FacebookAnalytic = async (link) => {
-  const OLD = await Page.find({})
+  /* const OLD = await Page.find({})
     .select("id url text img -_id")
     .select("-__v")
     .exec()
     .then((result) => {
       return result;
-    });
+    }); */
 
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch({});
   const page = await browser.newPage();
   await page.goto(link + "/videos", {
     waitUntil: "networkidle0",
   });
   let fullLink = link + "/videos/";
 
-  for (let i = 0; i < 1; i++) {
-    await page.keyboard.press("PageDown", { delay: 2000 });
+  for (let i = 0; i < 5; i++) {
+    await page.keyboard.press("End", { delay: 5000 });
   }
   const page_raw = await Promise.all(
     (
@@ -53,11 +53,12 @@ const FacebookAnalytic = async (link) => {
   }
   const view_raw = await Promise.all(
     (
-      await page.$x("//div[contains(@class, 'bnpdmtie')]")
+      await page.$x("//div[@class='bnpdmtie']")
     ).map(
       async (item) => await (await item.getProperty("textContent")).jsonValue()
     )
   );
+
   let view = view_raw.filter(function (item, index) {
     return index % 2 === 1;
   });
@@ -76,9 +77,11 @@ const FacebookAnalytic = async (link) => {
       await page.$x("//img[contains(@alt,'Video thumbnail')]")
     ).map(async (item) => await (await item.getProperty("src")).jsonValue())
   );
+  console.log(text);
   _.uniq(text);
   _.uniq(hrefs);
   _.uniq(img);
+  console.log(text);
   let fileName = [];
   text.forEach((item, index) => {
     let name = item
@@ -113,15 +116,18 @@ const FacebookAnalytic = async (link) => {
       pageName: page_name,
     });
   }
+  let finalResult = _.uniq(result);
+  //console.log(result);
+  console.log(view);
   // await page.screenshot({ path: "example.png" });
   //let abc = await page.$("._52jh");
   //console.log(abc);
-  await browser.close();
-  Page.insertMany(result, function (err, page) {
+  //await browser.close();
+  /*  Page.insertMany(result, function (err, page) {
     if (!err) console.log("ok");
     console.log(err);
-  });
-  return result;
+  }); */
+  return finalResult;
 };
 
 module.exports = FacebookAnalytic;

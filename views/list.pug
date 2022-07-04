@@ -6,25 +6,40 @@ html
     script(src="https://code.jquery.com/jquery-3.6.0.min.js")
     script.
       $(document).ready(function ajax(){
+        $(".close-modal").click(function () {
+              $(".download-modal").hide();
+           });
         $("form").submit(function(e) {
           e.preventDefault();
+          $(".close-modal").click(function () {
+              $(".download-modal").hide();
+           });
+           window.scrollTo({ top: 0, behavior: 'smooth' });
           let submitFacebook = []
           $('input[type=checkbox]:checked').each(function(){submitFacebook.push({"name": $(this).attr("name"),"pageName": $(this).attr("data-pagename"), "value": $(this).val() })})
           $.ajax({ method: "POST",
                    url: "/download",
                    data: {'data': submitFacebook},
                    success: (res) => {
-                   $(".text-center").html("Đang tải vui lòng chờ");
-          },
+                   $(".status").html("Đã tải xong, bạn có thể trở về trang chủ để tiếp tục xử lý trang khác");
+          },       beforeSend: () => {
+                    $(".download-modal").show()
+                    $(".status").html("Đang tải vui lòng chờ");
+          } 
                  })
         })
       })
 
   body
-    div.container.mx-auto.my-auto.flex.flex-col.justify-center
-       div
-        <iframe src="http://127.0.0.1:9001/" title="W3Schools Free Online Web Tutorials"></iframe>
-       h3.text-3xl.font-bold.text-gray-900.py-8.text-center Da cao duoc #{lists.length} videos
+    div.relative.container.mx-auto.my-auto.flex.flex-col.justify-center.overflow-hidden
+       div.download-modal.hidden.absolute.w-full.h-screen.bg-white.shadow-md.top-0
+        h1.text-xl.text-center Hệ thống đang download
+        iframe(src="http://127.0.0.1:9001/" title="Logging" ).w-full.h-1_2
+        p.text-md.text.status
+        button.close-modal.px-4.py-2.bg-sky-600.text-white.rounded-md.mt-5.mr-5 Quay lại trang video
+        a(href="/").px-4.py-2.bg-red-500.text-white.rounded-md.mt-5 Về trang chủ
+
+       h3.text-3xl.font-bold.text-gray-900.py-8.text-center Đã lấy được thông tin #{lists.length} videos
        div.container.mx-auto
         form(action="/download", method="POST").flex.check-list.flex-col
           table.flex.items-center.table-fixed.w-full
@@ -47,4 +62,4 @@ html
                         p.text-md.text-gray-500= item.view
                       th.w-1_10.text-left
                         p.text-md.text-gray-500= item.react 
-          input(type="submit" value="Download Video" placeholder="Download Video").bg-sky-500.px-8.py-2.text-white.mt-10.fixed.bottom-0.right-0
+          input(type="submit" value="Download Video" placeholder="Download Video").bg-sky-500.px-8.py-2.text-white.mt-10.fixed.bottom-0.right-0.font-bold

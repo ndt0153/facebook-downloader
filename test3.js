@@ -8,9 +8,9 @@ const DownloadFacebookVideo = async (name, url, pageName, message) => {
   fs.writeFileSync("stdout.txt", "");
   const subprocess = execa("youtube-dl", [
     "-f",
-    "webm+m4a",
+    "bestvideo[height>=720]+m4a/webm+m4a",
     "-o",
-    downloadDir + "/" + "videos/" + pageName + "/" + name,
+    downloadDir + "/" + "Facebook Downloader/" + pageName + "/" + name,
     "--merge-output-format",
     "mp4",
     url,

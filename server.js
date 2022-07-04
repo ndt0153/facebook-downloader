@@ -6,7 +6,7 @@ const FacebookAnalytic = require("./download");
 const mongoose = require("mongoose");
 const dbConnect = require("./db");
 const { saveToDB, uniques } = require("./facebook");
-
+const ProcessDataAndDownload = require("./test");
 app.use(cors());
 app.set("view engine", "pug");
 global.__basedir = __dirname;
@@ -19,7 +19,7 @@ let port = 8181;
 app.listen(port, () => {
   console.log(`Running at port: ${port} `);
 });
-mongoose
+/* mongoose
   .connect(dbConnect.url, {
     useNewUrlParser: true,
   })
@@ -30,7 +30,7 @@ mongoose
     console.error(err);
     process.exit();
   });
-
+ */
 app.post("/analytics", (req, res, next) => {
   /* const reqs = [
     {
@@ -163,8 +163,10 @@ app.get("/download", (req, res) => {
     });
 });
 app.post("/download", (req, res, next) => {
-  console.log(req.body.data);
-  res.status(200).send("ok");
+  //console.log(req.body.data);
+  ProcessDataAndDownload(req.body.data).then((response) => {
+    res.status(200).send(response);
+  });
 });
 app.get("/test", (req, res) => {
   req = req.query;

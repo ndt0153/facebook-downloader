@@ -4,23 +4,36 @@ html
     link(rel="stylesheet" type="text/css" href="/style/style.css")
     script(src="https://cdn.tailwindcss.com")
     script(src="https://code.jquery.com/jquery-3.6.0.min.js")
-     script.
+    script.
       $(document).ready(function(){
-      $("form").submit(function(event){
-
-      })
+        $('.page-form').on('submit', function() {
+         $(".loading-form").removeClass('hide');
+        });
       });
+
+
   body.bg-gray-200
-    div.h-screen.container.mx-auto.my-auto.flex.flex-col.justify-center
+    div.h-screen.container.mx-auto.my-auto.flex.flex-col.justify-center.items-center
+        
         h1.text-2xl.text-center.mb-4 Facebook Video Scraper
-        form(action='/analytics' method='POST' ).text-center
-            input(type="text" value="" placeholder="Enter Facebook Link" name="link").bg-white.w-3_4.h-12.rounded-t-xl.px-5
-            input(type="submit" value="" placeholder="Submit").bg-white
-        div.bg-white.bg-white.w-3_4.rounded-b-xl.px-5.py-6.mx-auto.shadow-md.recent-fix
-            p.text-gray-700.mb-4.font-bold Recent 
-            p.text-gray-500.py-2 https://www.facebook.com/Divodivafanvietnam
-            p.text-gray-500.py-2 https://www.facebook.com/Divodivafanvietnam
-            p.text-gray-500.py-2 https://www.facebook.com/Divodivafanvietnam
-            p.text-gray-500.py-2 https://www.facebook.com/Divodivafanvietnam
-            p.text-gray-500.py-2 https://www.facebook.com/Divodivafanvietnam
-            p.text-gray-500.py-2 https://www.facebook.com/Divodivafanvietnam
+        div.absolute.w-1_2.h-1_2.bg-white.rounded-md.flex.flex-col.items-center.justify-center.z-10.loading-form.hide
+          div.loadingio-spinner-spinner-2h19f3cly24.mx-auto
+            div.ldio-q85kpdaee4
+              div
+              div
+              div 
+              div 
+              div
+              div
+              div 
+              div 
+              div
+              div
+              div 
+              div 
+          h1.text-xl.text-center.mb-4.status Đang xử lý, vui lòng chờ trong giây lát
+        form(action='/analytics' method='POST' ).text-center.relative.w-3_4.page-form
+            input(type="text" value="" placeholder="Enter Facebook Link" name="link").bg-white.h-12.rounded-md.px-5.w-full
+            input(type="submit" value="Submit" placeholder="Submit").bg-sky-500.text-white.absolute.right-1.top-1.rounded.md.px-5.py-2.submit-button
+        
+        
