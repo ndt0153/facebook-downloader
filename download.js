@@ -93,7 +93,8 @@ const FacebookAnalytic = async (link) => {
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
       .replace(/đ/g, "d")
-      .replace(/Đ/g, "D");
+      .replace(/Đ/g, "D")
+      .replace(/\//g, "-");
     let finalName2 = finalName.replaceAll(" ", "_");
     fileName.push(finalName2);
   });
@@ -101,8 +102,8 @@ const FacebookAnalytic = async (link) => {
     .toString()
     .replace(/\n/g, "")
     .replace(/[!@#$%^&*"]/g, "")
-    .replace(/[”“]+/g, "")
-    .replace(/\//g, "-");
+    .replace(/[”“]+/g, "");
+
   let result = [];
   for (let i = 0; i < hrefs.length; i++) {
     let id = hrefs[i].split("/");
