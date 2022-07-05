@@ -8,7 +8,7 @@ const DownloadFacebookVideo = async (name, url, pageName, message) => {
 
   const subprocess = execa("youtube-dl", [
     "-f",
-    "bestvideo[height>=720]+m4a/webm+m4a",
+    "bestvideo[height>=640]+m4a/webm+m4a",
     "-o",
     downloadDir + "/" + "Facebook Downloader/" + pageName + "/" + name,
     "--merge-output-format",

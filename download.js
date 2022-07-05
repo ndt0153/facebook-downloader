@@ -101,7 +101,8 @@ const FacebookAnalytic = async (link) => {
     .toString()
     .replace(/\n/g, "")
     .replace(/[!@#$%^&*"]/g, "")
-    .replace(/[”“]+/g, "");
+    .replace(/[”“]+/g, "")
+    .replace(/\//g, "-");
   let result = [];
   for (let i = 0; i < hrefs.length; i++) {
     let id = hrefs[i].split("/");
